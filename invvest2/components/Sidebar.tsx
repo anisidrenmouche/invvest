@@ -58,7 +58,7 @@ export default function Sidebar() {
       ))}
 
       <div style={{ marginTop: 'auto', borderTop: '1px solid var(--bd)', paddingTop: 14 }}>
-        <button onClick={() => signOut()} style={{
+        <button onClick={() => signOut({ redirectUrl: '/sign-in' })} style={{
           display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px', borderRadius: 8,
           fontSize: 13, width: '100%', marginBottom: 6, background: 'none', border: 'none',
           cursor: 'pointer', color: 'var(--t3)',
