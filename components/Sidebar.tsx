@@ -1,7 +1,6 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { LayoutDashboard, Briefcase, Star, ArrowUpDown, Sparkles, LogOut } from 'lucide-react'
 import { useClerk, useUser } from '@clerk/nextjs'
 import { LayoutDashboard, Briefcase, Star, ArrowUpDown, Sparkles, LogOut, User } from 'lucide-react'
 
