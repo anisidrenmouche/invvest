@@ -6,7 +6,7 @@ import { useClerk, useUser } from '@clerk/nextjs'
 
 const NAV = [
   { section: 'PRINCIPAL', items: [
-    { href: '/',             icon: LayoutDashboard, label: "Vue d'ensemble" },
+    { href: '/dashboard', icon: LayoutDashboard, label: "Vue d'ensemble" },
     { href: '/portfolio',    icon: Briefcase,        label: 'Portefeuille' },
     { href: '/watchlist',    icon: Star,             label: 'Watchlist' },
     { href: '/transactions', icon: ArrowUpDown,      label: 'Transactions' },
