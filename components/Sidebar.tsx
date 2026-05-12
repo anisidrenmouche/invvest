@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { LayoutDashboard, Briefcase, Star, ArrowUpDown, Sparkles, LogOut } from 'lucide-react'
 import { useClerk, useUser } from '@clerk/nextjs'
+import { LayoutDashboard, Briefcase, Star, ArrowUpDown, Sparkles, LogOut, User } from 'lucide-react'
 
 const NAV = [
   { section: 'PRINCIPAL', items: [
@@ -10,6 +11,7 @@ const NAV = [
     { href: '/portfolio',    icon: Briefcase,        label: 'Portefeuille' },
     { href: '/watchlist',    icon: Star,             label: 'Watchlist' },
     { href: '/transactions', icon: ArrowUpDown,      label: 'Transactions' },
+    { href: '/profile', icon: User, label: 'Profil' },
   ]},
   { section: 'OUTILS', items: [
     { href: '/ai', icon: Sparkles, label: 'Analyse IA' },
