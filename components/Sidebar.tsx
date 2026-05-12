@@ -1,8 +1,8 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useClerk, useUser } from '@clerk/nextjs'
 import { LayoutDashboard, Briefcase, Star, ArrowUpDown, Sparkles, LogOut, User } from 'lucide-react'
+import { useClerk, useUser } from '@clerk/nextjs'
 
 const NAV = [
   { section: 'PRINCIPAL', items: [
@@ -10,7 +10,7 @@ const NAV = [
     { href: '/portfolio',    icon: Briefcase,        label: 'Portefeuille' },
     { href: '/watchlist',    icon: Star,             label: 'Watchlist' },
     { href: '/transactions', icon: ArrowUpDown,      label: 'Transactions' },
-    { href: '/profile', icon: User, label: 'Profil' },
+    { href: '/profile',      icon: User,             label: 'Profil' },
   ]},
   { section: 'OUTILS', items: [
     { href: '/ai', icon: Sparkles, label: 'Analyse IA' },
@@ -37,6 +37,7 @@ export default function Sidebar() {
         <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--t)' }}>invvest</span>
       </div>
 
+      {/* Nav */}
       {NAV.map(({ section, items }) => (
         <div key={section} style={{ marginBottom: 20 }}>
           <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: '.8px', color: 'var(--t3)', padding: '0 10px', marginBottom: 5 }}>{section}</div>
@@ -58,16 +59,16 @@ export default function Sidebar() {
         </div>
       ))}
 
+      {/* Footer */}
       <div style={{ marginTop: 'auto', borderTop: '1px solid var(--bd)', paddingTop: 14 }}>
-        <button onClick={() => signOut()} style={{
-          display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px', borderRadius: 8,
-          fontSize: 13, width: '100%', marginBottom: 6, background: 'none', border: 'none',
-          cursor: 'pointer', color: 'var(--t3)',
-        }}>
+        <button
+          onClick={async () => { await signOut(); window.location.href = '/sign-in'; }}
+          style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px', borderRadius: 8, fontSize: 13, width: '100%', marginBottom: 6, background: 'none', border: 'none', cursor: 'pointer', color: 'var(--t3)' }}>
           <LogOut size={15} strokeWidth={1.6} />
           Déconnexion
         </button>
 
+        {/* Avatar */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '6px 8px', borderRadius: 8, background: 'rgba(255,255,255,0.03)' }}>
           {user?.imageUrl
             ? <img src={user.imageUrl} alt="" style={{ width: 30, height: 30, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }} />
