@@ -6,7 +6,7 @@ import { useClerk, useUser } from '@clerk/nextjs'
 
 const NAV = [
   { section: 'PRINCIPAL', items: [
-    { href: '/dashboard', icon: LayoutDashboard, label: "Vue d'ensemble" },
+    { href: '/dashboard',    icon: LayoutDashboard, label: "Vue d'ensemble" },
     { href: '/portfolio',    icon: Briefcase,        label: 'Portefeuille' },
     { href: '/watchlist',    icon: Star,             label: 'Watchlist' },
     { href: '/transactions', icon: ArrowUpDown,      label: 'Transactions' },
@@ -29,7 +29,6 @@ export default function Sidebar() {
 
   return (
     <aside style={{ width: 220, background: 'var(--bg)', borderRight: '1px solid var(--bd)', display: 'flex', flexDirection: 'column', padding: '20px 12px', flexShrink: 0, height: '100vh', position: 'sticky', top: 0 }}>
-      {/* Logo */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '0 8px', marginBottom: 28 }}>
         <div style={{ width: 32, height: 32, borderRadius: 8, background: 'linear-gradient(135deg,#4ADE80,#22C55E)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
           <svg width="16" height="16" viewBox="0 0 20 20" fill="#0F1117"><path d="M10 2L3 7v11h14V7z"/></svg>
@@ -37,7 +36,6 @@ export default function Sidebar() {
         <span style={{ fontSize: 16, fontWeight: 700, color: 'var(--t)' }}>invvest</span>
       </div>
 
-      {/* Nav */}
       {NAV.map(({ section, items }) => (
         <div key={section} style={{ marginBottom: 20 }}>
           <div style={{ fontSize: 10, fontWeight: 600, letterSpacing: '.8px', color: 'var(--t3)', padding: '0 10px', marginBottom: 5 }}>{section}</div>
@@ -48,7 +46,7 @@ export default function Sidebar() {
                 display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px', borderRadius: 8,
                 fontSize: 13, marginBottom: 2, textDecoration: 'none', transition: 'all .15s',
                 background: active ? 'rgba(74,222,128,0.1)' : 'transparent',
-                color: active ? 'var(--acc)' : 'var(--t2)',
+                color: active ? '#4ADE80' : 'var(--t2)',
                 fontWeight: active ? 500 : 400,
               }}>
                 <Icon size={15} strokeWidth={active ? 2 : 1.6} />
@@ -59,16 +57,14 @@ export default function Sidebar() {
         </div>
       ))}
 
-      {/* Footer */}
       <div style={{ marginTop: 'auto', borderTop: '1px solid var(--bd)', paddingTop: 14 }}>
         <button
-          onClick={async () => { await signOut(); window.location.href = '/sign-in'; }}
+          onClick={async () => { await signOut(); window.location.replace('/'); }}
           style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px', borderRadius: 8, fontSize: 13, width: '100%', marginBottom: 6, background: 'none', border: 'none', cursor: 'pointer', color: 'var(--t3)' }}>
           <LogOut size={15} strokeWidth={1.6} />
           Déconnexion
         </button>
 
-        {/* Avatar */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '6px 8px', borderRadius: 8, background: 'rgba(255,255,255,0.03)' }}>
           {user?.imageUrl
             ? <img src={user.imageUrl} alt="" style={{ width: 30, height: 30, borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }} />
@@ -78,7 +74,7 @@ export default function Sidebar() {
             <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--t)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {user?.firstName ? `${user.firstName} ${user.lastName ?? ''}`.trim() : 'Mon compte'}
             </div>
-            <div style={{ fontSize: 10, fontWeight: 600, color: 'var(--acc)' }}>✦ Premium</div>
+            <div style={{ fontSize: 10, fontWeight: 600, color: '#4ADE80' }}>✦ Premium</div>
           </div>
         </div>
       </div>
